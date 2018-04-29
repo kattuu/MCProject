@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -17,21 +17,21 @@
                 android:id="@+id/radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"/>
+                android:layout_weight="3" />
 
             <TextView
                 android:id="@+id/locationTextview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
                 android:layout_weight="1"
-                android:text="Delhi"/>
+                android:textSize="22sp"
+                tools:text="Delhi" />
 
             <Button
                 android:id="@+id/deleteCard"
                 android:layout_width="match_parent"
-                android:layout_weight="3"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="3" />
 
         </LinearLayout>
 
