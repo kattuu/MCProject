@@ -222,34 +222,21 @@ public class Home_2015095 extends Fragment {
             public void run() {
 
 
-                // HttpURLConnection httpURLConnection = null;
+
                 HttpURLConnection httpURLConnection1 = null;
-                //InputStream inputStream = null;
+
                 InputStream inputStream1 = null;
                 try {
-                    //  URL url = new URL(weatherUrl);
+
                     URL url1 = new URL(airUrl);
                     httpURLConnection1 = (HttpURLConnection) url1.openConnection();
                     httpURLConnection1.setConnectTimeout(1000);
                     Log.e(TAG, "orf" + url1);
-                    //httpURLConnection = (HttpURLConnection) url.openConnection();
-                    //httpURLConnection.setConnectTimeout(10000);
-                    // inputStream = httpURLConnection.getInputStream();
+
                     inputStream1 = httpURLConnection1.getInputStream();
-                    // JSONObject jsonRootObject = new JSONObject(convertStreamToString(inputStream));
+
                     JSONObject jsonRootObject1 = new JSONObject(convertStreamToString(inputStream1));
-                    //JSONObject jsonObject = jsonRootObject.getJSONObject("coord");
-                    //final String lon = jsonObject.getString("lon");
-                    //final String lat = jsonObject.getString("lat");
-                    //JSONArray weathi = jsonRootObject.getJSONArray("weather");
-                    //final String description = weathi.getJSONObject(0).getString("main");
-                    //JSONObject main = jsonRootObject.getJSONObject("main");
-                    //final String temprature = String.valueOf(main.getInt("temp") - 273) + "°C";
-                    //final String humidity = String.valueOf(main.getInt("humidity"));
-                    //final String pressure = String.valueOf(main.getInt("pressure"));
-                    //final JSONObject wind = jsonRootObject.getJSONObject("wind");
-                    //final String windSpeed = String.valueOf(wind.getInt("speed"));
-                    //final String cityName = jsonRootObject.getString("name");
+
 
 
                     JSONObject msg = jsonRootObject1.getJSONObject("random_recommendations");

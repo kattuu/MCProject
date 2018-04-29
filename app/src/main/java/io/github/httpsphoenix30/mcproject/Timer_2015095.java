@@ -73,15 +73,32 @@ public class Timer_2015095 extends Fragment implements RangeTimePickerDialog.ISe
         dialog.show(fragmentManager, "");
     }
 
-
-
     @Override
     public void onSelectedTime(int hourStart, int minuteStart, int hourEnd, int minuteEnd)
     {
-
         Toast.makeText(getActivity(), "Start: "+hourStart+":"+minuteStart+"\nEnd: "+hourEnd+":"+minuteEnd, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MY_FRAGMENT_ID)
+        {
+            if (resultCode == Activity.RESULT_OK)
+            {
+                if (data.getExtras().containsKey(RangeTimePickerDialog.HOUR_START))
+                {
+                    int hourStart = data.getExtras().getInt(RangeTimePickerDialog.HOUR_START);
+                    int hourEnd = data.getExtras().getInt(RangeTimePickerDialog.HOUR_END);
+                    int minuteStart = data.getExtras().getInt(RangeTimePickerDialog.MINUTE_START);
+                    int minuteEnd = data.getExtras().getInt(RangeTimePickerDialog.MINUTE_END);
+                    // Use the returned value
+                    Toast.makeText(getActivity(), "Time start:"+hourStart+":"+minuteStart+"\nUntil: "+hourEnd+":"+minuteEnd, Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
 
 }
 
