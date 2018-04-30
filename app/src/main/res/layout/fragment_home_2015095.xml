@@ -18,9 +18,11 @@
             android:orientation="vertical">
 
     <android.support.v7.widget.CardView
+
         android:layout_width="match_parent"
         app:cardUseCompatPadding="true"
         android:layout_weight="0.5"
+
         android:id="@+id/top_card"
         android:layout_height="300dp">
 
@@ -170,6 +172,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal|bottom">
 
@@ -177,7 +180,7 @@
             android:layout_width="wrap_content"
             android:foregroundGravity="bottom|center_horizontal"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_height="20dp"
+            android:layout_height="26dp"
             android:src="@drawable/frag2"
             />
 

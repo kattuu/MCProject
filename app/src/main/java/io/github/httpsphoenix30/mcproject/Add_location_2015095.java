@@ -10,8 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -145,7 +145,7 @@ public class Add_location_2015095 extends Fragment {
 
         public class RecyclerViewHolder extends RecyclerView.ViewHolder {
             RadioButton radioButton;
-            Button deleteButton;
+            ImageView deleteButton;
             TextView locationText;
 
             public RecyclerViewHolder(final View itemView) {
