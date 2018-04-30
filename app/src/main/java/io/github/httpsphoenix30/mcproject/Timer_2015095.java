@@ -133,8 +133,8 @@ public class Timer_2015095 extends Fragment {
                 updateTime(hr_start, min_start);
 
                 mContext.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit()
-                        .putInt(START_TIME_HR, hr_start)
-                        .putInt(START_TIME_MIN, min_start)
+                        .putInt(START_TIME_HR, hourOfDay)
+                        .putInt(START_TIME_MIN, minutes)
                         .apply();
             } else if (flag == 1) {
 
@@ -144,8 +144,8 @@ public class Timer_2015095 extends Fragment {
                 updateTime(hr_end, min_end);
 
                 mContext.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit()
-                        .putInt(END_TIME_HR, hr_end)
-                        .putInt(END_TIME_MIN, hr_end)
+                        .putInt(END_TIME_HR, hourOfDay)
+                        .putInt(END_TIME_MIN, minutes)
                         .apply();
             }
         }
@@ -164,7 +164,8 @@ public class Timer_2015095 extends Fragment {
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 30 * 60 * 1000, alarmPendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 5 * 60 * 1000, alarmPendingIntent);
+        Toast.makeText(mContext, "Alarms set", Toast.LENGTH_SHORT).show();
     }
 
     private void updateTime(int hours, int mins) {
@@ -209,11 +210,10 @@ public class Timer_2015095 extends Fragment {
                 e.printStackTrace();
             }
 
-            if(start_date.before(end_date)) {
-                Toast.makeText(getActivity(),"Correct Time Selected.",Toast.LENGTH_SHORT).show();
-            }
-            else {
-                Toast.makeText(getActivity(),"Start Time is Greater then End Time.",Toast.LENGTH_SHORT).show();
+            if (start_date.before(end_date)) {
+                Toast.makeText(getActivity(), "Correct Time Selected.", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), "Start Time is Greater then End Time.", Toast.LENGTH_SHORT).show();
                 view_start.setText("");
                 view_end.setText("");
             }
