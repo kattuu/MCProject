@@ -1,16 +1,21 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+
     tools:context=".Home_2015095">
 
-    <RelativeLayout
+    <ScrollView
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -157,25 +162,27 @@
 
         </android.support.v7.widget.CardView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/bottom_card"
-            android:gravity="center_horizontal|bottom">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:foregroundGravity="bottom|center_horizontal"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_height="20dp"
-                android:src="@drawable/frag2"
-                />
-
-
         </LinearLayout>
 
-    </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal|bottom">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:foregroundGravity="bottom|center_horizontal"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_height="20dp"
+            android:src="@drawable/frag2"
+            />
 
 
-</ScrollView>
+    </LinearLayout>
+
+
+</RelativeLayout>

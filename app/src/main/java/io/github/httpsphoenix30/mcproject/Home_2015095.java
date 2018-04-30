@@ -10,10 +10,13 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -43,6 +46,7 @@ public class Home_2015095 extends Fragment {
     public static Handler uiHandler;
     private LocationManager locationManager;
     static final int REQUEST_LOCATION = 1;
+    private CardView weatherCard;
 
     public Home_2015095(){
 
@@ -58,11 +62,18 @@ public class Home_2015095 extends Fragment {
         city = (TextView) view.findViewById(R.id.city);
         Airquality = view.findViewById(R.id.airquality);
         Description = view.findViewById(R.id.description);
+        weatherCard = view.findViewById(R.id.top_card);
         pollutant = view.findViewById(R.id.pollutant);
         Healthmsg = view.findViewById(R.id.healthmsg);
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         getLocation(null);
         getAirquality(null);
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        //weatherCard.setLayoutParams(new RelativeLayout.LayoutParams(displayMetrics.heightPixels,displayMetrics.widthPixels));
+        Log.d("card", String.valueOf(displayMetrics.heightPixels));
+        Log.d("card", String.valueOf(displayMetrics.widthPixels));
         return view;
     }
 
