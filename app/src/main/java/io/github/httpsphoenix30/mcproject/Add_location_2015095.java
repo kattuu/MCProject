@@ -50,6 +50,7 @@ public class Add_location_2015095 extends Fragment {
             public void onClick(View view, int position) {
                 adapter_2015095.current = position;
                 adapter_2015095.notifyDataSetChanged();
+                HomeScreen_2015095.mViewPager.setCurrentItem(1);
             }
 
             @Override

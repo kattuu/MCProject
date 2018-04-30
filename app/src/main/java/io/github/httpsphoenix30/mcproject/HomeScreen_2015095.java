@@ -30,7 +30,7 @@ public class HomeScreen_2015095 extends AppCompatActivity {
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-    private ViewPager mViewPager;
+    public static ViewPager mViewPager;
     private PlaceModel currentPlace;
     private Home_2015095 home_2015095;
     private Timer_2015095 timer_2015095;
