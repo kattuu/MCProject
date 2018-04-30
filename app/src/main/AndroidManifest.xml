@@ -28,6 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Setting_Activity_2013118"/>
+        <activity android:name=".About_Activity_2013118"/>
 
         <receiver
             android:name=".receivers.AlarmReceiver"

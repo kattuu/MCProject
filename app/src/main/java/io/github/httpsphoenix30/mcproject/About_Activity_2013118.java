@@ -14,7 +14,7 @@ public class About_Activity_2013118 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about__2013118);
-        imageView =findViewById(R.id.image);
+        imageView =findViewById(R.id.imageView);
         image1 =findViewById(R.id.image1);
         image2 =findViewById(R.id.image2);
         image3 =findViewById(R.id.image3);

@@ -10,14 +10,19 @@ import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import io.github.httpsphoenix30.mcproject.receivers.AlarmReceiver;
 
@@ -35,6 +40,7 @@ public class Timer_2015095 extends Fragment {
     public static final String IS_ALARM_SET = "IS_ALARM_SET";
 
     static final int TIME_DIALOG_ID = 1111;
+    static final int TIME_DIALOG_ID_END = 2222;
     public static final int RC_ALARM = 100;
     private TextView view_start;
     private TextView view_end;
@@ -42,11 +48,12 @@ public class Timer_2015095 extends Fragment {
     public Button btnClick_end;
     private Button btnSetAlarms;
     private int flag = -1;
-    private int hr;
-    //private int hr_end;
-    private int min;
-    //private int min_end;
-
+    private int hr_start;
+    private int hr_end;
+    private int min_start;
+    private int min_end;
+    private Date start_date;
+    private Date end_date;
     private Context mContext;
     private LocationManager locationManager;
 
@@ -58,10 +65,10 @@ public class Timer_2015095 extends Fragment {
         btnSetAlarms = frag_view.findViewById(R.id.btn_set);
         view_start = (TextView) frag_view.findViewById(R.id.output_start);
         view_end = (TextView) frag_view.findViewById(R.id.output_end);
-        final Calendar c = Calendar.getInstance();
-        hr = c.get(Calendar.HOUR_OF_DAY);
-        min = c.get(Calendar.MINUTE);
-        updateTime(hr, min);
+        //final Calendar c = Calendar.getInstance();
+        //hr = c.get(Calendar.HOUR_OF_DAY);
+        //min = c.get(Calendar.MINUTE);
+        //updateTime(hr, min);
 
         addButtonClickListener(frag_view);
 
@@ -105,7 +112,9 @@ public class Timer_2015095 extends Fragment {
     protected Dialog createdDialog(int id) {
         switch (id) {
             case TIME_DIALOG_ID:
-                return new TimePickerDialog(getActivity(), timePickerListener, hr, min, false);
+                return new TimePickerDialog(getActivity(), timePickerListener, hr_start, min_start, false);
+            case TIME_DIALOG_ID_END:
+                return new TimePickerDialog(getActivity(), timePickerListener, hr_end, min_end, true);
         }
         return null;
     }
@@ -113,15 +122,27 @@ public class Timer_2015095 extends Fragment {
     private TimePickerDialog.OnTimeSetListener timePickerListener = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minutes) {
-            hr = hourOfDay;
-            min = minutes;
-            updateTime(hr, min);
+            //hr = hourOfDay;
+            //min = minutes;
+            //updateTime(hr, min);
             if (flag == 0) {
+
+                hr_start = hourOfDay;
+                min_start = minutes;
+
+                updateTime(hr_start, min_start);
+
                 mContext.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit()
                         .putInt(START_TIME_HR, hourOfDay)
                         .putInt(START_TIME_MIN, minutes)
                         .apply();
             } else if (flag == 1) {
+
+                hr_end = hourOfDay;
+                min_end = minutes;
+
+                updateTime(hr_end, min_end);
+
                 mContext.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit()
                         .putInt(END_TIME_HR, hourOfDay)
                         .putInt(END_TIME_MIN, minutes)
@@ -168,8 +189,34 @@ public class Timer_2015095 extends Fragment {
             view_start.setText(aTime);
             view_end.setText(aTime);
         } else if (flag == 0) {
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+            String t = String.valueOf(hours) + ":" + String.valueOf(minutes);
+            Log.d("time", t);
+            try {
+                start_date = sdf.parse(t);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             view_start.setText(aTime);
+
         } else if (flag == 1) {
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+            String t = String.valueOf(hours) + ":" + String.valueOf(minutes);
+            Log.d("time", t);
+            try {
+                end_date = sdf.parse(t);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            if(start_date.before(end_date)) {
+                Toast.makeText(getActivity(),"Correct Time Selected.",Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(getActivity(),"Start Time is Greater then End Time.",Toast.LENGTH_SHORT).show();
+                view_start.setText("");
+                view_end.setText("");
+            }
             view_end.setText(aTime);
         }
     }

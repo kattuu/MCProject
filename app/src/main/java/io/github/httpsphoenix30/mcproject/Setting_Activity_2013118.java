@@ -60,7 +60,7 @@ public class Setting_Activity_2013118 extends AppCompatActivity implements View.
     public void openFeedbackDialog(View view) {
         d3 = new Dialog(Setting_Activity_2013118.this);
         d3.setContentView(R.layout.feedback_dialog);
-        submitFeedback = (Button) findViewById(R.id.submitFeedback);
+        submitFeedback = (Button)d3.findViewById(R.id.submitFeedback);
         submitFeedback.setOnClickListener(this);
         d3.show();
     }
@@ -84,6 +84,9 @@ public class Setting_Activity_2013118 extends AppCompatActivity implements View.
             case R.id.rating:
                 openRatingDialog(v);
                 break;
+            case R.id.about:
+                openAboutActivity(v);
+                break;
             case R.id.submitRating:
                 Toast.makeText(getApplicationContext(), String.valueOf(ratingBar.getRating()), Toast.LENGTH_SHORT).show();
                 d2.dismiss();
@@ -93,6 +96,8 @@ public class Setting_Activity_2013118 extends AppCompatActivity implements View.
                 break;
             case R.id.submitFeedback:
                 d3.dismiss();
+                break;
+
 
         }
 
