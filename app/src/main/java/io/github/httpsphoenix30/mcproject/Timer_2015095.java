@@ -165,6 +165,7 @@ public class Timer_2015095 extends Fragment {
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 5 * 60 * 1000, alarmPendingIntent);
+        Toast.makeText(mContext, "Alarms set", Toast.LENGTH_SHORT).show();
     }
 
     private void updateTime(int hours, int mins) {
@@ -209,11 +210,10 @@ public class Timer_2015095 extends Fragment {
                 e.printStackTrace();
             }
 
-            if(start_date.before(end_date)) {
-                Toast.makeText(getActivity(),"Correct Time Selected.",Toast.LENGTH_SHORT).show();
-            }
-            else {
-                Toast.makeText(getActivity(),"Start Time is Greater then End Time.",Toast.LENGTH_SHORT).show();
+            if (start_date.before(end_date)) {
+                Toast.makeText(getActivity(), "Correct Time Selected.", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), "Start Time is Greater then End Time.", Toast.LENGTH_SHORT).show();
                 view_start.setText("");
                 view_end.setText("");
             }
