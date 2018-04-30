@@ -298,4 +298,5 @@
     <color name="greenTransparent">#4D1ABC9C</color>
     <color name="blueTransparent">#4D5DADE2</color>
     <color name="orangeTransparent">#4DF8C471</color>
+    <color name="whiteTransparent">#4DFFFFFF</color>
 </resources>

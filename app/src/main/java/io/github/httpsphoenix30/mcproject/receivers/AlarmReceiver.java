@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationManager;
 import android.media.RingtoneManager;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -32,7 +33,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     @SuppressLint("MissingPermission")
     @Override
     public void onReceive(Context context, Intent intent) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(Timer_2015095.PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         if (calendar.get(Calendar.HOUR_OF_DAY) >= sharedPreferences.getInt(Timer_2015095.END_TIME_HR, 0)) {
