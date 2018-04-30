@@ -2,4 +2,20 @@
     <string name="app_name">MC Project</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="heading">OUR TEAM</string>
+    <string name="name1">Md. Altaf Raza</string>
+    <string name="designation1">Lead Designer</string>
+    <string name="desc1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="name2">Shourya Sharma</string>
+    <string name="designation2">Lead Developer</string>
+    <string name="desc2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="name3">Khushvinder Vaid</string>
+    <string name="designation3">Marketing Head</string>
+    <string name="desc3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="name4">Vishal Thakur</string>
+    <string name="designation4">Lead Coder</string>
+    <string name="desc4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="name5">Rohit Kumar</string>
+    <string name="designation5">Lead Prototyper</string>
+    <string name="desc5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
 </resources>

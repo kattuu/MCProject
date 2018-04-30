@@ -1,5 +1,6 @@
 package io.github.httpsphoenix30.mcproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -117,7 +118,8 @@ public class HomeScreen_2015095 extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(getApplicationContext(),Setting_Activity_2013118.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -153,6 +155,8 @@ public class HomeScreen_2015095 extends AppCompatActivity {
             return fragments.size();
         }
     }
+
+
 
 
 }
