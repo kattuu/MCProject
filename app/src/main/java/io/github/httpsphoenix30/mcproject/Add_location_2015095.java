@@ -2,6 +2,7 @@ package io.github.httpsphoenix30.mcproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -58,7 +59,7 @@ public class Add_location_2015095 extends Fragment {
 
             }
         }));
-        Button button = (Button) view.findViewById(R.id.button);
+        FloatingActionButton button = (FloatingActionButton) view.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
