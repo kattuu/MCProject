@@ -9,14 +9,13 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -27,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
 
 /**
  * Created by vishal on 28/04/18.
@@ -48,7 +48,7 @@ public class Home_2015095 extends Fragment {
     static final int REQUEST_LOCATION = 1;
     private CardView weatherCard;
 
-    public Home_2015095(){
+    public Home_2015095() {
 
     }
 
@@ -68,6 +68,15 @@ public class Home_2015095 extends Fragment {
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         getLocation(null);
         getAirquality(null);
+
+        ImageView ivDayOrNight = view.findViewById(R.id.iv_day_night);
+
+        Date date = new Date();
+        if (date.getHours() > 18 || date.getHours() < 6) {
+            ivDayOrNight.setImageResource(R.drawable.night);
+        } else {
+            ivDayOrNight.setImageResource(R.drawable.sun);
+        }
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -233,7 +242,6 @@ public class Home_2015095 extends Fragment {
             public void run() {
 
 
-
                 HttpURLConnection httpURLConnection1 = null;
 
                 InputStream inputStream1 = null;
@@ -247,7 +255,6 @@ public class Home_2015095 extends Fragment {
                     inputStream1 = httpURLConnection1.getInputStream();
 
                     JSONObject jsonRootObject1 = new JSONObject(convertStreamToString(inputStream1));
-
 
 
                     JSONObject msg = jsonRootObject1.getJSONObject("random_recommendations");
